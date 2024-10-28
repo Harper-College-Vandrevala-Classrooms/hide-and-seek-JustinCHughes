@@ -37,7 +37,7 @@ public class TestFuzzyFinder {
 
   @Test
   void testLinearSearchRandomized() {
-    ArrayList<Fuzzy> fuzzies = generator.sortedRainbowFuzzies();
+    ArrayList<Fuzzy> fuzzies = generator.randomizedRainbowFuzzies();
     int i = -1;
     int index = 0;
     while(i == -1)
@@ -49,5 +49,27 @@ public class TestFuzzyFinder {
       index++;
     }
     assertEquals(i, finder.linearSearch(fuzzies));
+  }
+
+  @Test
+  void testBinarySearchSorted() {
+    ArrayList<Fuzzy> fuzzies = generator.sortedRainbowFuzzies();
+    assertEquals(1000, finder.binarySearch(fuzzies));
+  }
+
+  @Test
+  void testBinarySearchRandomized() {
+    ArrayList<Fuzzy> fuzzies = generator.randomizedRainbowFuzzies();
+    int i = -1;
+    int index = 0;
+    while(i == -1)
+    {
+      if(fuzzies.get(index).color.equals("gold"))
+      {
+        i = index;
+      }
+      index++;
+    }
+    assertEquals(i, finder.binarySearch(fuzzies));
   }
 }

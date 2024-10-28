@@ -7,7 +7,7 @@ public class FuzzyFinder
   // Your code goes here!
   public static void main(String args[])
   {
-    System.out.println("In addition to your search functions, you can write a main function if you wish!");
+    System.out.println("Test");
   }
 
   public static int linearSearch(ArrayList<Fuzzy> inputList)
@@ -20,6 +20,31 @@ public class FuzzyFinder
       }
     }
 
+    return -1;
+  }
+
+  public static int binarySearch(ArrayList<Fuzzy> inputList)
+  {
+    int low = 0;
+    int high = inputList.size() - 1;
+
+    while(low <= high)
+    {
+      int mid = (low + high) / 2;
+      System.out.println(mid);
+      if(inputList.get(mid).color.equals("gold"))
+      {
+        return mid;
+      }
+      else if(inputList.get(mid).color.compareTo("gold") < 0)
+      {
+        low = mid + 1;
+      }
+      else
+      {
+        high = mid - 1;
+      }
+    }
     return -1;
   }
 }
